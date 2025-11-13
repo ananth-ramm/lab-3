@@ -400,50 +400,54 @@ function currencyAddition(float1, float2) {
 console.log(0.3 == currencyAddition(0.1, 0.2)); // true
 
 function currencyOperation(float1, float2, operation) {
-  const factor = 100; 
   let result;
+
   switch (operation) {
     case '+':
-      result = Math.round(float1 * factor) + Math.round(float2 * factor);
+      result = float1 + float2;
       break;
     case '-':
-      result = Math.round(float1 * factor) - Math.round(float2 * factor);
+      result = float1 - float2;
       break;
     case '*':
-      result = Math.round(float1 * factor) * Math.round(float2 * factor) / factor;
+      result = float1 * float2;
       break;
     case '/':
-      result = Math.round(float1 * factor) / Math.round(float2 * factor);
+      result = float1 / float2;
       break;
     default:
       throw new Error('Invalid operation');
   }
-  return result / factor;
+
+  return Number(result.toFixed(2));
 }
+
 
 console.log(0.3 == currencyOperation(0.1, 0.2, '+')); // true
 
 function currencyOperationExtended(float1, float2, operation, numDecimals = 2) {
-  const factor = Math.pow(10, numDecimals);
   let result;
+
   switch (operation) {
     case '+':
-      result = Math.round(float1 * factor) + Math.round(float2 * factor);
+      result = float1 + float2;
       break;
     case '-':
-      result = Math.round(float1 * factor) - Math.round(float2 * factor);
+      result = float1 - float2;
       break;
     case '*':
-      result = Math.round(float1 * factor) * Math.round(float2 * factor) / factor;
+      result = float1 * float2;
       break;
     case '/':
-      result = Math.round(float1 * factor) / Math.round(float2 * factor);
+      result = float1 / float2;
       break;
     default:
       throw new Error('Invalid operation');
   }
-  return result / factor;
+
+  return Number(result.toFixed(numDecimals));
 }
+
 
 console.log(0.333 == currencyOperationExtended(1, 3, '/', 3)); // true
 console.log(0.3333 == currencyOperationExtended(1, 3, '/', 4)); // true 
